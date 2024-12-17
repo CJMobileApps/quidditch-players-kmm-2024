@@ -159,8 +159,11 @@ kotlin {
                 implementation(ui)
                 implementation(foundation)
                 implementation(material)
+                implementation(material3)
                 implementation(runtime)
                 implementation(components.resources)
+
+
             }
 
             with(libs) {
@@ -170,21 +173,36 @@ kotlin {
 //                implementation(image.loader)
 //                implementation(essenty.lifecycle)
             }
+
+            // Ktor for networking
+            implementation("io.ktor:ktor-client-core:2.3.1")
+            implementation("io.ktor:ktor-client-content-negotiation:2.3.1")
+            implementation("io.ktor:ktor-serialization-kotlinx-json:2.3.1")
+
+            // JSON serialization
+            // TODO use gson instead one day
+            implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1") // Compatible with Kotlin 1.9.0
         }
 
-        androidMain {
-            dependencies {
+        androidMain.dependencies {
 //                implementation(libs.androidx.media3.exoplayer)
-            }
+            // Ktor for Android
+            implementation("io.ktor:ktor-client-android:2.3.1")
         }
 
-        //TODO delete this
+        iosMain.dependencies {
+            implementation("io.ktor:ktor-client-darwin:2.3.1")
+        }
+    }
+
+
+    //TODO delete this
 //        desktopMain.dependencies {
 //            implementation(compose.desktop.common)
 //            implementation(libs.vlcj)
 //        }
 
-        //todo delete this
+    //todo delete this
 //        jsMain.dependencies {
 //            implementation(compose.html.core)
 //            with(libs) {
@@ -192,7 +210,7 @@ kotlin {
 //                implementation(ktor.client.json.js)
 //            }
 //        }
-    }
+
 }
 
 android {
