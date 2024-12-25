@@ -15,7 +15,6 @@ kotlin {
         val androidMain by getting {
             dependencies {
                 implementation(project(":shared"))
-                implementation(libs.androidx.activity.compose)
             }
         }
     }
@@ -23,10 +22,7 @@ kotlin {
 
 android {
     namespace = "com.cjmobileapps.quidditch_players_kmm_2024.android"
-//    sourceSets["main"].manifest.srcFile("src/androidApp/AndroidManifest.xml")
     sourceSets["main"].manifest.srcFile("src/main/AndroidManifest.xml")
-    //androidApp/src/main/AndroidManifest.xml
-
 
     compileSdk = 34
     defaultConfig {
@@ -56,10 +52,4 @@ android {
     kotlin {
         jvmToolchain(17)
     }
-//    kotlinOptions {
-//        jvmTarget = "17"
-//    }
 }
-//dependencies {
-//    implementation(libs.androidx.appcompat)
-//}

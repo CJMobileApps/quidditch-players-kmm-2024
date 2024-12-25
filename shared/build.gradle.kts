@@ -158,14 +158,18 @@ kotlin {
             with(compose) {
                 implementation(ui)
                 implementation(foundation)
-                implementation(material)
                 implementation(material3)
                 implementation(runtime)
                 implementation(components.resources)
 
-
+                //todo learning koin wrap this in libs below
+                api(libs.koin.core)
+                implementation(libs.koin.compose)
+                implementation(libs.koin.compose.viewmodel)
+                implementation(libs.lifecycle.viewmodel)
+                implementation(libs.navigation.compose)
             }
-
+//
             with(libs) {
 //                //implementation(kotlinx.  .serialization.json)
 //                implementation(bundles.ktor)
@@ -182,35 +186,39 @@ kotlin {
             // JSON serialization
             // TODO use gson instead one day
             implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1") // Compatible with Kotlin 1.9.0
+
+            // needed for koin
+            api(libs.koin.core)
+            implementation(libs.koin.compose)
+            implementation(libs.koin.compose.viewmodel)
+            implementation(libs.lifecycle.viewmodel)
+            implementation(libs.navigation.compose)
+
+            // Kermit Logger
+            api(libs.kermit) //Add latest version
+
         }
 
         androidMain.dependencies {
-//                implementation(libs.androidx.media3.exoplayer)
+            api(libs.androidx.activity.compose)
+
             // Ktor for Android
             implementation("io.ktor:ktor-client-android:2.3.1")
+
+            // learning koin
+            api(libs.koin.android)
+            api(libs.koin.androidx.compose)
+
+            // Compose preview only works on Android
+            implementation("androidx.compose.ui:ui-tooling:1.5.3")
+            implementation("androidx.compose.ui:ui-tooling-preview:1.5.3")
+
         }
 
         iosMain.dependencies {
             implementation("io.ktor:ktor-client-darwin:2.3.1")
         }
     }
-
-
-    //TODO delete this
-//        desktopMain.dependencies {
-//            implementation(compose.desktop.common)
-//            implementation(libs.vlcj)
-//        }
-
-    //todo delete this
-//        jsMain.dependencies {
-//            implementation(compose.html.core)
-//            with(libs) {
-//                implementation(ktor.client.js)
-//                implementation(ktor.client.json.js)
-//            }
-//        }
-
 }
 
 android {
@@ -224,9 +232,6 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
-//    kotlinOptions {
-//        jvmTarget = "17"
-//    }
     kotlin {
         jvmToolchain(17)
     }

@@ -5,11 +5,12 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
+        android:name="com.cjmobileapps.quidditch_players_kmm_2024.QuidditchPlayersApplication"
         android:allowBackup="false"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name="com.cjmobileapps.quidditch_players_kmm_2024.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,4 +18,4 @@
             </intent-filter>
         </activity>
     </application>
-</manifest> 
+</manifest>
