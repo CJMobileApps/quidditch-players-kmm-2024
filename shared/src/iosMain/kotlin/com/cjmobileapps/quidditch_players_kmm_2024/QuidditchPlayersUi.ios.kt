@@ -10,7 +10,7 @@ import platform.UIKit.UIDevice
 fun MainViewController() = ComposeUIViewController(
     configure = {
         setupLogging()
-        InitKoin.intKoin()
+        InitKoin.intKoin(isDebugMode = true)
     }
 ) {
     QuidditchPlayersUi()

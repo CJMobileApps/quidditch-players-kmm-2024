@@ -15,8 +15,8 @@ class QuidditchPlayersApiDataSource(private val ktorHttpClient : KtorHttpClient)
 
     suspend fun getImages(): List<BirdImage> {
         //TODO wrap in context api wrapper
-        val httpResponse: HttpResponse = ktorHttpClient.httpClient.get("https://ktor.io/")
-        val byteArrayBody: ByteArray = httpResponse.body()
+//        val httpResponse: HttpResponse = ktorHttpClient.httpClient.get("https://ktor.io/")
+//        val byteArrayBody: ByteArray = httpResponse.body()
 
         //todo refactor this
         val images = ktorHttpClient.httpClient

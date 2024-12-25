@@ -181,6 +181,7 @@ kotlin {
             // Ktor for networking
             implementation("io.ktor:ktor-client-core:2.3.1")
             implementation("io.ktor:ktor-client-content-negotiation:2.3.1")
+            implementation("io.ktor:ktor-client-logging:2.3.1") // Logging feature
             implementation("io.ktor:ktor-serialization-kotlinx-json:2.3.1")
 
             // JSON serialization

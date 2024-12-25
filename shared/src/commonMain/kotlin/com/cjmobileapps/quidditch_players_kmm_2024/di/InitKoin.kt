@@ -8,10 +8,16 @@ import org.koin.dsl.KoinAppDeclaration
 
 object InitKoin {
 
-    fun intKoin(config: KoinAppDeclaration? = null) {
+    private var isDebugMode = false
+
+    fun intKoin(isDebugMode: Boolean, config: KoinAppDeclaration? = null) {
+        this.isDebugMode = isDebugMode
+
         startKoin {
             config?.invoke(this)
             modules(networkModule, dataModule, uiModule)
         }
     }
+
+    fun isDebugMode() = isDebugMode
 }
