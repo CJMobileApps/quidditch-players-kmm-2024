@@ -1,3 +1,4 @@
+import org.gradle.internal.impldep.org.junit.experimental.categories.Categories.CategoryFilter.exclude
 import org.jetbrains.kotlin.konan.target.Family
 
 //plugins {
@@ -94,6 +95,12 @@ plugins {
     alias(libs.plugins.kotlin.parcelize)
     alias(libs.plugins.jetbrains.compose)
     alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.ksp)
+    //alias(libs.plugins.room)
+
+    // https://issuetracker.google.com/issues/343408758#comment4
+    //https://stackoverflow.com/questions/78627516/room-with-kmm-unresolved-reference-instantiateimpl
+    //    alias(libs.plugins.room)
 }
 
 kotlin {
@@ -198,6 +205,17 @@ kotlin {
             // Kermit Logger
             api(libs.kermit) //Add latest version
 
+            // Image loader
+            implementation(libs.kamel.image.default)
+
+            // Room
+            implementation(libs.room.runtime)
+            //implementation("androidx.room:room-runtime:2.5.2")
+            //annotationProcessor("androidx.room:room-compiler:2.5.2")
+            //ksp("androidx.room:room-compiler:2.5.2")
+            //implementation("androidx.room:room-ktx:2.5.2")
+
+
         }
 
         androidMain.dependencies {
@@ -213,7 +231,6 @@ kotlin {
             // Compose preview only works on Android
             implementation("androidx.compose.ui:ui-tooling:1.5.3")
             implementation("androidx.compose.ui:ui-tooling-preview:1.5.3")
-
         }
 
         iosMain.dependencies {
@@ -237,3 +254,52 @@ android {
         jvmToolchain(17)
     }
 }
+
+//room {
+//    schemaDirectory("$projectDir/schemas")
+//}
+
+//room {
+//
+//}
+
+//ksp {
+//    arg("room.schemaLocation", "$projectDir/schemas")
+//}
+
+dependencies {
+    ksp(libs.room.compiler)
+    //add("kspIosArm64", libs.room.compiler)
+
+    // room
+    add("kspAndroid", libs.room.compiler)
+    //add("kspIosSimulatorArm64", libs.room.compiler)
+    add("kspIosX64", libs.room.compiler)
+    add("kspIosArm64", libs.room.compiler)
+    //add("kspKotlinIosArm64", libs.room.compiler)
+}
+
+ksp {
+    arg("room.schemaLocation", "${projectDir}/schemas")
+}
+
+//ksp {
+//    arg("room.schemaLocation", "$projectDir/schemas")
+//}
+
+//ksp {
+//    // Apply KSP arguments only to Android source sets
+//    arg("room.schemaLocation", "$projectDir/schemas")
+//    exclude("iosX64", "iosArm64", "iosSimulatorArm64")
+//}
+
+
+
+//dependencies {
+//    // ... but instead: here!
+//    add("kspCommonMainMetadata", libs.some.ksp.plugin) // Run KSP on [commonMain] code
+//    add("kspAndroid", libs.some.ksp.plugin)
+//    add("kspIosX64", libs.some.ksp.plugin)
+//    add("kspIosArm64", libs.some.ksp.plugin)
+//    add("kspIosSimulatorArm64", libs.some.ksp.plugin)
+//}

@@ -11,8 +11,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.cjmobileapps.quidditch_players_kmm_2024.ui.houses.HousesUi
 //import com.cjmobileapps.quidditchplayersandroid.ui.houses.HousesUi
-import com.cjmobileapps.quidditchplayersandroid.ui.houses.viewmodel.HousesViewModel
-import com.cjmobileapps.quidditchplayersandroid.ui.houses.viewmodel.HousesViewModelImpl
+import com.cjmobileapps.quidditch_players_kmm_2024.ui.houses.viewmodel.HousesViewModel
+import com.cjmobileapps.quidditch_players_kmm_2024.ui.houses.viewmodel.HousesViewModelImpl
 //import com.cjmobileapps.quidditchplayersandroid.ui.playerdetail.PlayerDetailUi
 //import com.cjmobileapps.quidditchplayersandroid.ui.playerdetail.viewmodel.PlayerDetailViewModel
 //import com.cjmobileapps.quidditchplayersandroid.ui.playerdetail.viewmodel.PlayerDetailViewModelImpl

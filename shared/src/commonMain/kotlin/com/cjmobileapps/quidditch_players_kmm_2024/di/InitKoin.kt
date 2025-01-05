@@ -1,5 +1,6 @@
 package com.cjmobileapps.quidditch_players_kmm_2024.di
 
+import com.cjmobileapps.quidditch_players_kmm_2024.di.module.coroutinesModule
 import com.cjmobileapps.quidditch_players_kmm_2024.di.module.dataModule
 import com.cjmobileapps.quidditch_players_kmm_2024.di.module.networkModule
 import com.cjmobileapps.quidditch_players_kmm_2024.di.module.uiModule
@@ -15,7 +16,7 @@ object InitKoin {
 
         startKoin {
             config?.invoke(this)
-            modules(networkModule, dataModule, uiModule)
+            modules(networkModule, dataModule, uiModule, coroutinesModule)
         }
     }
 

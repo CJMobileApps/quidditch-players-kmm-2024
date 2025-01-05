@@ -8,6 +8,7 @@
         android:name="com.cjmobileapps.quidditch_players_kmm_2024.QuidditchPlayersApplication"
         android:allowBackup="false"
         android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme">
         <activity
             android:name="com.cjmobileapps.quidditch_players_kmm_2024.MainActivity"

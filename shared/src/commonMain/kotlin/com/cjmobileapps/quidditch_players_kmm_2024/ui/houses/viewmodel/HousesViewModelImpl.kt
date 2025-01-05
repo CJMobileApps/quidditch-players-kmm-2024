@@ -1,6 +1,5 @@
-package com.cjmobileapps.quidditchplayersandroid.ui.houses.viewmodel
+package com.cjmobileapps.quidditch_players_kmm_2024.ui.houses.viewmodel
 
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
@@ -8,11 +7,13 @@ import androidx.lifecycle.viewModelScope
 import co.touchlab.kermit.Logger
 import com.cjmobileapps.quidditch_players_kmm_2024.NavItem
 import com.cjmobileapps.quidditch_players_kmm_2024.data.model.House
+import com.cjmobileapps.quidditch_players_kmm_2024.data.quidditchplayers.QuidditchPlayersUseCase
 import com.cjmobileapps.quidditch_players_kmm_2024.network.QuidditchPlayersApiDataSource
+import com.cjmobileapps.quidditch_players_kmm_2024.util.onError
 //import com.cjmobileapps.quidditchplayersandroid.data.model.House
 //import com.cjmobileapps.quidditchplayersandroid.data.quidditchplayers.QuidditchPlayersUseCase
 //import com.cjmobileapps.quidditchplayersandroid.ui.NavItem
-//import com.cjmobileapps.quidditchplayersandroid.util.coroutine.CoroutineDispatchers
+//import com.cjmobileapps.quidditch_players_kmm_2024.util.coroutine.CoroutineDispatchers
 //import com.cjmobileapps.quidditchplayersandroid.util.onError
 //import com.cjmobileapps.quidditchplayersandroid.util.onSuccess
 import kotlinx.coroutines.CoroutineExceptionHandler
@@ -24,41 +25,49 @@ import kotlinx.coroutines.launch
 class HousesViewModelImpl
     //@Inject
     constructor(
-        private val quidditchPlayersApiDataSource: QuidditchPlayersApiDataSource
-        //private val quidditchPlayersUseCase: QuidditchPlayersUseCase,
-        ///coroutineDispatchers: CoroutineDispatchers,
+        private val quidditchPlayersApiDataSource: QuidditchPlayersApiDataSource,
+        private val quidditchPlayersUseCase: QuidditchPlayersUseCase,
+        //coroutineDispatchers: CoroutineDispatchers,
     ) : ViewModel(), HousesViewModel {
         private val compositeJob = Job()
 
         private val exceptionHandler =
             CoroutineExceptionHandler { _, throwable ->
                 Logger.e(tag) { "coroutineExceptionHandler() error occurred: $throwable \n ${throwable.message}"}
-//                snackbarState.value = HousesSnackbarState.ShowGenericError()
+                snackbarState.value = HousesSnackbarState.ShowGenericError()
             }
 
+    //todo
 //        private val coroutineContext =
 //            compositeJob + coroutineDispatchers.main + exceptionHandler + SupervisorJob()
 //
 //        private val coroutineContextHousesFlow =
 //            compositeJob + coroutineDispatchers.main + exceptionHandler + SupervisorJob()
-//
-//        private val housesState = mutableStateOf<HousesState>(HousesState.LoadingState)
-//
-//        private val snackbarState = mutableStateOf<HousesSnackbarState>(HousesSnackbarState.Idle)
-//
-        private val tag = HousesViewModelImpl::class.simpleName ?: ""
-//
-//        override fun getState() = housesState.value
-//
-//        override fun getSnackbarState() = snackbarState.value
 
-    init {
-        viewModelScope.launch {
-            println("From the viewmodel " + quidditchPlayersApiDataSource.getImages())
-        }
-    }
+            private val coroutineContext =
+            compositeJob + exceptionHandler + SupervisorJob()
+
+        private val coroutineContextHousesFlow =
+            compositeJob + exceptionHandler + SupervisorJob()
+
+        private val housesState = mutableStateOf<HousesState>(HousesState.LoadingState)
+
+        private val snackbarState = mutableStateOf<HousesSnackbarState>(HousesSnackbarState.Idle)
+
+        private val tag = HousesViewModelImpl::class.simpleName ?: ""
+
+        override fun getState() = housesState.value
+
+        override fun getSnackbarState() = snackbarState.value
+
+//    init {
+//        viewModelScope.launch {
+//            println("From the viewmodel " + quidditchPlayersApiDataSource.getAllHouses())
+//        }
+//    }
 
         init {
+            //todo undo
 //            viewModelScope.launch(coroutineContext) {
 //                quidditchPlayersUseCase
 //                    .fetchHousesApi()
@@ -67,7 +76,8 @@ class HousesViewModelImpl
 //                        snackbarState.value = HousesSnackbarState.UnableToGetHousesListError()
 //                    }
 //            }
-//
+
+            //todo undo
 //            viewModelScope.launch(coroutineContextHousesFlow) {
 //                quidditchPlayersUseCase.getHousesFromDB { housesResponse ->
 //                    housesResponse
@@ -82,34 +92,36 @@ class HousesViewModelImpl
 //            }
         }
 
-//        override fun resetSnackbarState() {
-//            snackbarState.value = HousesSnackbarState.Idle
-//        }
-//
-//        override fun goToPlayersListUi(houseName: String) {
-//            val state = getState()
-//            if (state !is HousesState.HousesLoadedState) return
-//            state.housesNavRouteUi.value = HousesNavRouteUi.GoToPlayerListUi(houseName)
-//        }
-//
-//        override fun getHousesNavRouteUiState(): HousesNavRouteUi {
-//            val state = getState()
-//            if (state !is HousesState.HousesLoadedState) return HousesNavRouteUi.Idle
-//            return state.housesNavRouteUi.value
-//        }
-//
-//        override fun resetNavRouteUiToIdle() {
-//            val state = getState()
-//            if (state !is HousesState.HousesLoadedState) return
-//            state.housesNavRouteUi.value = HousesNavRouteUi.Idle
-//        }
+        override fun resetSnackbarState() {
+            snackbarState.value = HousesSnackbarState.Idle
+        }
+
+        override fun goToPlayersListUi(houseName: String) {
+            val state = getState()
+            if (state !is HousesState.HousesLoadedState) return
+            state.housesNavRouteUi.value = HousesNavRouteUi.GoToPlayerListUi(houseName)
+        }
+
+        override fun getHousesNavRouteUiState(): HousesNavRouteUi {
+            val state = getState()
+            if (state !is HousesState.HousesLoadedState) return HousesNavRouteUi.Idle
+            return state.housesNavRouteUi.value
+        }
+
+        override fun resetNavRouteUiToIdle() {
+            val state = getState()
+            if (state !is HousesState.HousesLoadedState) return
+            state.housesNavRouteUi.value = HousesNavRouteUi.Idle
+        }
 
         sealed class HousesState {
             data object LoadingState : HousesState()
 
             data class HousesLoadedState(
                 val houses: List<House> = emptyList(),
-                val housesNavRouteUi: MutableState<HousesNavRouteUi> = mutableStateOf(HousesNavRouteUi.Idle),
+                val housesNavRouteUi: MutableState<HousesNavRouteUi> = mutableStateOf(
+                    HousesNavRouteUi.Idle
+                ),
             ) : HousesState()
         }
 
