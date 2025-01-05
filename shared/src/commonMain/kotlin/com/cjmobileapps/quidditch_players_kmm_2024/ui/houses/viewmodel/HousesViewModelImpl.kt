@@ -9,7 +9,9 @@ import com.cjmobileapps.quidditch_players_kmm_2024.NavItem
 import com.cjmobileapps.quidditch_players_kmm_2024.data.model.House
 import com.cjmobileapps.quidditch_players_kmm_2024.data.quidditchplayers.QuidditchPlayersUseCase
 import com.cjmobileapps.quidditch_players_kmm_2024.network.QuidditchPlayersApiDataSource
+import com.cjmobileapps.quidditch_players_kmm_2024.util.coroutine.CoroutineDispatchers
 import com.cjmobileapps.quidditch_players_kmm_2024.util.onError
+import com.cjmobileapps.quidditch_players_kmm_2024.util.onSuccess
 //import com.cjmobileapps.quidditchplayersandroid.data.model.House
 //import com.cjmobileapps.quidditchplayersandroid.data.quidditchplayers.QuidditchPlayersUseCase
 //import com.cjmobileapps.quidditchplayersandroid.ui.NavItem
@@ -27,7 +29,7 @@ class HousesViewModelImpl
     constructor(
         private val quidditchPlayersApiDataSource: QuidditchPlayersApiDataSource,
         private val quidditchPlayersUseCase: QuidditchPlayersUseCase,
-        //coroutineDispatchers: CoroutineDispatchers,
+        coroutineDispatchers: CoroutineDispatchers,
     ) : ViewModel(), HousesViewModel {
         private val compositeJob = Job()
 
@@ -37,18 +39,11 @@ class HousesViewModelImpl
                 snackbarState.value = HousesSnackbarState.ShowGenericError()
             }
 
-    //todo
-//        private val coroutineContext =
-//            compositeJob + coroutineDispatchers.main + exceptionHandler + SupervisorJob()
-//
-//        private val coroutineContextHousesFlow =
-//            compositeJob + coroutineDispatchers.main + exceptionHandler + SupervisorJob()
-
-            private val coroutineContext =
-            compositeJob + exceptionHandler + SupervisorJob()
+        private val coroutineContext =
+            compositeJob + coroutineDispatchers.main + exceptionHandler + SupervisorJob()
 
         private val coroutineContextHousesFlow =
-            compositeJob + exceptionHandler + SupervisorJob()
+            compositeJob + coroutineDispatchers.main + exceptionHandler + SupervisorJob()
 
         private val housesState = mutableStateOf<HousesState>(HousesState.LoadingState)
 
@@ -60,24 +55,16 @@ class HousesViewModelImpl
 
         override fun getSnackbarState() = snackbarState.value
 
-//    init {
-//        viewModelScope.launch {
-//            println("From the viewmodel " + quidditchPlayersApiDataSource.getAllHouses())
-//        }
-//    }
-
         init {
-            //todo undo
-//            viewModelScope.launch(coroutineContext) {
-//                quidditchPlayersUseCase
-//                    .fetchHousesApi()
-//                    .onError { _, _ ->
-//                        housesState.value = HousesState.HousesLoadedState()
-//                        snackbarState.value = HousesSnackbarState.UnableToGetHousesListError()
-//                    }
-//            }
+            viewModelScope.launch(coroutineContext) {
+                quidditchPlayersUseCase
+                    .fetchHousesApi()
+                    .onError { _, _ ->
+                        housesState.value = HousesState.HousesLoadedState()
+                        snackbarState.value = HousesSnackbarState.UnableToGetHousesListError()
+                    }
+            }
 
-            //todo undo
 //            viewModelScope.launch(coroutineContextHousesFlow) {
 //                quidditchPlayersUseCase.getHousesFromDB { housesResponse ->
 //                    housesResponse

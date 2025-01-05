@@ -11,21 +11,20 @@ import kotlinx.coroutines.coroutineScope
 
 class QuidditchPlayersApiDataSource(
     private val ktorHttpClient: KtorHttpClient,
-    //private val coroutineDispatchers: CoroutineDispatchers,
+    private val coroutineDispatchers: CoroutineDispatchers,
 ) {
 
     suspend fun getAllHouses(): ResponseWrapper<List<House>> {
-        TODO("Not yet implemented")
-//        return withContextApiWrapper(coroutineContext = coroutineDispatchers.io) {
-//            coroutineScope {
-//                async {
-//                    ktorHttpClient
-//                        .httpClient
-//                        .get("api/v1/quidditchplayers/house")
-//                        .body<ResponseWrapper<List<House>>>()
-//                }
-//            }
-//        }
+        return withContextApiWrapper(coroutineContext = coroutineDispatchers.io) {
+            coroutineScope {
+                async {
+                    ktorHttpClient
+                        .httpClient
+                        .get("api/v1/quidditchplayers/house")
+                        .body<ResponseWrapper<List<House>>>()
+                }
+            }
+        }
     }
 }
 

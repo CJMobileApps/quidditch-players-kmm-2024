@@ -186,14 +186,14 @@ kotlin {
             }
 
             // Ktor for networking
-            implementation("io.ktor:ktor-client-core:2.3.1")
-            implementation("io.ktor:ktor-client-content-negotiation:2.3.1")
-            implementation("io.ktor:ktor-client-logging:2.3.1") // Logging feature
-            implementation("io.ktor:ktor-serialization-kotlinx-json:2.3.1")
+            implementation(libs.ktor.client.core)
+            implementation(libs.ktor.content.negotiation)
+            implementation(libs.ktor.client.logging) // Logging feature
+            implementation(libs.ktor.serialization)
 
             // JSON serialization
             // TODO use gson instead one day
-            implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1") // Compatible with Kotlin 1.9.0
+            implementation(libs.kotlinx.serialization.json) // Compatible with Kotlin 1.9.0
 
             // needed for koin
             api(libs.koin.core)
@@ -222,7 +222,7 @@ kotlin {
             api(libs.androidx.activity.compose)
 
             // Ktor for Android
-            implementation("io.ktor:ktor-client-android:2.3.1")
+            implementation(libs.ktor.client.android)
 
             // learning koin
             api(libs.koin.android)

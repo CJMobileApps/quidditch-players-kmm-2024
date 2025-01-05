@@ -27,15 +27,14 @@ class KtorHttpClient {
 //            }
         }
         if (InitKoin.isDebugMode()) {
-            //todo undo logger
-//            install(Logging) {
-//                logger = object : Logger {
-//                    override fun log(message: String) {
-//                        KermitLogger.d { message }
-//                    }
-//                }
-//                level = LogLevel.ALL
-//            }
+            install(Logging) {
+                logger = object : Logger {
+                    override fun log(message: String) {
+                        KermitLogger.d { message }
+                    }
+                }
+                level = LogLevel.ALL
+            }
         }
     }
 }

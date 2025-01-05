@@ -9,6 +9,5 @@ import org.koin.dsl.module
 
 val coroutinesModule = module {
     singleOf(::QuidditchPlayersApiDataSource).bind<QuidditchPlayersApiDataSource>()
-    //singleOf(::CoroutineDispatchersImpl).bind<CoroutineDispatchers>()
-    //singleOf(::CoroutineDispatchersImpl2).bind<CoroutineDispatchers>()
+    single<CoroutineDispatchers> { CoroutineDispatchersImpl }
 }

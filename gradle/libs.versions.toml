@@ -3,14 +3,14 @@ agp = "8.6.0"
 kermit = "2.0.4"
 kotlin = "2.0.0"
 compose = "1.5.4"
-coroutines = "1.7.3"
+coroutines = "1.9.0"
 compose-material3 = "1.1.2"
 androidx-activityCompose = "1.8.0"
 appcompat = "1.7.0"
 compose-plugin="1.6.11"
-ktor="2.3.11"
+ktor="3.0.0"
 ktor-js="2.3.11"
-kotlinx-serialization ="1.6.3"
+kotlinx-serialization ="1.7.3"
 kamelImageDefault = "1.0.0"
 koin = "3.6.0-Beta4"
 koinComposeMultiplatform = "1.2.0-Beta4"
@@ -38,12 +38,13 @@ androidx-ui-tooling-preview-android = { group = "androidx.compose.ui", name = "u
 
 
 # Ktor
+ktor-client-android = { module = "io.ktor:ktor-client-android", version.ref = "ktor" }
 ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
 ktor-client-js = { module = "io.ktor:ktor-client-js", version.ref = "ktor" }
 ktor-client-json-js = { module = "io.ktor:ktor-client-json-js", version.ref = "ktor-js" }
 ktor-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
 ktor-json = { module = "io.ktor:ktor-client-json", version.ref = "ktor" }
-ktor-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
+ktor-client-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
 ktor-serialization = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
 ktor-client-serialization = { module = "io.ktor:ktor-client-serialization", version.ref = "ktor" }
 
@@ -77,7 +78,6 @@ kotlin-parcelize={id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "k
 jetbrains-compose = { id = "org.jetbrains.compose", version.ref = "compose-plugin" }
 kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
-#ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 ksp = { id ="com.google.devtools.ksp", version.ref = "ksp" }
 room = { id = "androidx.room", version.ref = "room" }
 
