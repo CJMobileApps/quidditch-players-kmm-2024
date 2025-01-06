@@ -17,8 +17,8 @@ koinComposeMultiplatform = "1.2.0-Beta4"
 navigationCompose = "2.8.0-alpha02"
 lifecycleViewModel = "2.8.2"
 uiToolingPreviewAndroid = "1.7.6"
-ksp = "2.0.0-1.0.22"
-room = "2.7.0-alpha01"
+ksp = "2.1.0-1.0.29"
+room = "2.7.0-alpha12"
 
 [libraries]
 kamel-image-default = { module = "media.kamel:kamel-image-default", version.ref = "kamelImageDefault" }

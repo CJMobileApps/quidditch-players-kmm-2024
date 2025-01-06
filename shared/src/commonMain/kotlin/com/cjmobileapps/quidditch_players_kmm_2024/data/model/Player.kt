@@ -5,12 +5,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-import kotlin.uuid.ExperimentalUuidApi
-import kotlin.uuid.Uuid
-
-@OptIn(ExperimentalUuidApi::class)
 data class Player(
-    val id: Uuid,
+    val id: String,
     val firstName: String,
     val lastName: String,
     val yearsPlayed: List<Int>,
@@ -20,10 +16,9 @@ data class Player(
     val house: HouseName,
 )
 
-@OptIn(ExperimentalUuidApi::class)
 @Entity
 data class PlayerEntity(
-    @PrimaryKey val id: Uuid,
+    @PrimaryKey val id: String,
     val firstName: String,
     val lastName: String,
     val yearsPlayed: List<Int>,
@@ -33,9 +28,8 @@ data class PlayerEntity(
     val house: HouseName,
 )
 
-@OptIn(ExperimentalUuidApi::class)
 data class PlayerState(
-    val id: Uuid,
+    val id: String,
     val firstName: String,
     val lastName: String,
     val yearsPlayed: List<Int>,
@@ -50,7 +44,6 @@ data class PlayerState(
     }
 }
 
-@OptIn(ExperimentalUuidApi::class)
 fun PlayerEntity.toPlayerState(): PlayerState {
     return PlayerState(
         id = this.id,
@@ -72,7 +65,6 @@ fun List<Player>.toPlayersEntities(positions: Map<Int, Position>): List<PlayerEn
     return this.map { it.toPlayerEntity(positions) }
 }
 
-@OptIn(ExperimentalUuidApi::class)
 fun Player.toPlayerEntity(positions: Map<Int, Position>): PlayerEntity {
     return PlayerEntity(
         id = id,
