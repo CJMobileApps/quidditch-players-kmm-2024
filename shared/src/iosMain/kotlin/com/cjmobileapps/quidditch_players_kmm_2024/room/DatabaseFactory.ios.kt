@@ -1,16 +1,10 @@
 package com.cjmobileapps.quidditch_players_kmm_2024.room
 
 import androidx.room.Room
-import androidx.room.RoomDatabase
 import kotlinx.cinterop.ExperimentalForeignApi
 import platform.Foundation.NSDocumentDirectory
 import platform.Foundation.NSFileManager
-import platform.Foundation.NSHomeDirectory
 import platform.Foundation.NSUserDomainMask
-
-//actual class DbClient(
-//    private val context: Context
-//)
 
 actual class DatabaseFactory {
     companion object {
@@ -23,16 +17,6 @@ actual class DatabaseFactory {
         }
     }
 }
-
-
-// shared/src/iosMain/kotlin/Database.kt
-
-//fun getDatabaseBuilder(): RoomDatabase.Builder<QuidditchPlayersDatabase> {
-//    val dbFilePath = documentDirectory() + "/quidditch-players-database.db"
-//    return Room.databaseBuilder<QuidditchPlayersDatabase>(
-//        name = dbFilePath
-//    )
-//}
 
 @OptIn(ExperimentalForeignApi::class)
 private fun documentDirectory(): String {
