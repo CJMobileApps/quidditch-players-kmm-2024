@@ -46,8 +46,8 @@ fun HousesUi(
 ) {
     Scaffold(
         topBar = {
-            //QuidditchPlayersTopAppBar(navController)
-                 },
+        //QuidditchPlayersTopAppBar(navController)
+             },
         snackbarHost = { SnackbarHost(hostState = snackbarHostState) },
     ) { innerPadding ->
             when (val state = housesViewModel.getState()) {

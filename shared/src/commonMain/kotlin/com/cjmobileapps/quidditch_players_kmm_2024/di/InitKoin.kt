@@ -4,6 +4,7 @@ import com.cjmobileapps.quidditch_players_kmm_2024.di.module.coroutinesModule
 import com.cjmobileapps.quidditch_players_kmm_2024.di.module.dataModule
 import com.cjmobileapps.quidditch_players_kmm_2024.di.module.networkModule
 import com.cjmobileapps.quidditch_players_kmm_2024.di.module.uiModule
+import databaseModule
 import org.koin.core.context.startKoin
 import org.koin.dsl.KoinAppDeclaration
 
@@ -16,7 +17,7 @@ object InitKoin {
 
         startKoin {
             config?.invoke(this)
-            modules(networkModule, dataModule, uiModule, coroutinesModule)
+            modules(networkModule, dataModule, uiModule, coroutinesModule, databaseModule)
         }
     }
 

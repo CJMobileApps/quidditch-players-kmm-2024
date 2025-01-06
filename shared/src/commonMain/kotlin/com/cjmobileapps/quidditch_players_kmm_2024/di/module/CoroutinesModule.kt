@@ -1,6 +1,6 @@
 package com.cjmobileapps.quidditch_players_kmm_2024.di.module
 
-import com.cjmobileapps.quidditch_players_kmm_2024.network.QuidditchPlayersApiDataSource
+import com.cjmobileapps.quidditch_players_kmm_2024.datasource.QuidditchPlayersApiDataSource
 import com.cjmobileapps.quidditch_players_kmm_2024.util.coroutine.CoroutineDispatchers
 import com.cjmobileapps.quidditch_players_kmm_2024.util.coroutine.CoroutineDispatchersImpl
 import org.koin.core.module.dsl.singleOf

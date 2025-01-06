@@ -8,7 +8,7 @@ import co.touchlab.kermit.Logger
 import com.cjmobileapps.quidditch_players_kmm_2024.NavItem
 import com.cjmobileapps.quidditch_players_kmm_2024.data.model.House
 import com.cjmobileapps.quidditch_players_kmm_2024.data.quidditchplayers.QuidditchPlayersUseCase
-import com.cjmobileapps.quidditch_players_kmm_2024.network.QuidditchPlayersApiDataSource
+import com.cjmobileapps.quidditch_players_kmm_2024.datasource.QuidditchPlayersApiDataSource
 import com.cjmobileapps.quidditch_players_kmm_2024.util.coroutine.CoroutineDispatchers
 import com.cjmobileapps.quidditch_players_kmm_2024.util.onError
 import com.cjmobileapps.quidditch_players_kmm_2024.util.onSuccess
@@ -65,18 +65,18 @@ class HousesViewModelImpl
                     }
             }
 
-//            viewModelScope.launch(coroutineContextHousesFlow) {
-//                quidditchPlayersUseCase.getHousesFromDB { housesResponse ->
-//                    housesResponse
-//                        .onSuccess { houses ->
-//                            housesState.value = HousesState.HousesLoadedState(houses = houses)
-//                        }
-//                        .onError { _, _ ->
-//                            housesState.value = HousesState.HousesLoadedState()
-//                            snackbarState.value = HousesSnackbarState.UnableToGetHousesListError()
-//                        }
-//                }
-//            }
+            viewModelScope.launch(coroutineContextHousesFlow) {
+                quidditchPlayersUseCase.getHousesFromDB { housesResponse ->
+                    housesResponse
+                        .onSuccess { houses ->
+                            housesState.value = HousesState.HousesLoadedState(houses = houses)
+                        }
+                        .onError { _, _ ->
+                            housesState.value = HousesState.HousesLoadedState()
+                            snackbarState.value = HousesSnackbarState.UnableToGetHousesListError()
+                        }
+                }
+            }
         }
 
         override fun resetSnackbarState() {
