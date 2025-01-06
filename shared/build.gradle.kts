@@ -41,8 +41,6 @@ kotlin {
     applyDefaultHierarchyTemplate()
 
     sourceSets {
-//        val desktopMain by getting
-
         commonMain.dependencies {
             with(compose) {
                 implementation(ui)
@@ -50,62 +48,59 @@ kotlin {
                 implementation(material3)
                 implementation(runtime)
                 implementation(components.resources)
-
-                //todo learning koin wrap this in libs below
             }
 
             with(libs) {
+                // Koin
                 api(koin.core)
                 implementation(koin.compose)
                 implementation(koin.compose.viewmodel)
                 implementation(lifecycle.viewmodel)
+
+                // ViewModel
+                implementation(lifecycle.viewmodel)
+
+                // Navigation
                 implementation(navigation.compose)
-                //todo move below up here
+
+                // Ktor for networking
+                implementation(ktor.client.core)
+                implementation(ktor.content.negotiation)
+                implementation(ktor.client.logging) // Logging feature
+                implementation(ktor.serialization)
+
+                // JSON serialization
+                implementation(kotlinx.serialization.json) // Compatible with Kotlin 1.9.0
+
+                // Kermit Logger
+                api(libs.kermit) //Add latest version
+
+                // Image loader
+                implementation(kamel.image.default)
+
+                // Room
+                implementation(room.runtime)
             }
-
-            // Ktor for networking
-            implementation(libs.ktor.client.core)
-            implementation(libs.ktor.content.negotiation)
-            implementation(libs.ktor.client.logging) // Logging feature
-            implementation(libs.ktor.serialization)
-
-            // JSON serialization
-            implementation(libs.kotlinx.serialization.json) // Compatible with Kotlin 1.9.0
-
-            // needed for koin
-            api(libs.koin.core)
-            implementation(libs.koin.compose)
-            implementation(libs.koin.compose.viewmodel)
-            implementation(libs.lifecycle.viewmodel)
-            implementation(libs.navigation.compose)
-
-            // Kermit Logger
-            api(libs.kermit) //Add latest version
-
-            // Image loader
-            implementation(libs.kamel.image.default)
-
-            // Room
-            implementation(libs.room.runtime)
         }
 
         androidMain.dependencies {
+            // Compose
             api(libs.androidx.activity.compose)
 
             // Ktor for Android
             implementation(libs.ktor.client.android)
 
-            // learning koin
+            // Koin
             api(libs.koin.android)
             api(libs.koin.androidx.compose)
 
             // Compose preview only works on Android
-            implementation("androidx.compose.ui:ui-tooling:1.5.3")
-            implementation("androidx.compose.ui:ui-tooling-preview:1.5.3")
+            implementation(libs.androidx.ui.tooling)
+            implementation(libs.androidx.ui.tooling.preview)
         }
 
         iosMain.dependencies {
-            implementation("io.ktor:ktor-client-darwin:2.3.1")
+            implementation(libs.ktor.client.darwin)
         }
     }
 }
