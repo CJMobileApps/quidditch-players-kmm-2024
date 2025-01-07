@@ -1,10 +1,10 @@
-package com.cjmobileapps.quidditch_players_kmm_2024.android
+package com.cjmobileapps.quidditch_players_kmm_2024
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import com.cjmobileapps.quidditch_players_kmm_2024.MainAndroid
 
+//TODO rename this from MainActivity
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

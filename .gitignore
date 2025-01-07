@@ -9,3 +9,6 @@ captures
 local.properties
 xcuserdata
 /.kotlin
+
+# Ignore Schemas
+shared/schemas
