@@ -8,26 +8,16 @@ import co.touchlab.kermit.Logger
 import com.cjmobileapps.quidditch_players_kmm_2024.NavItem
 import com.cjmobileapps.quidditch_players_kmm_2024.data.model.House
 import com.cjmobileapps.quidditch_players_kmm_2024.data.quidditchplayers.QuidditchPlayersUseCase
-import com.cjmobileapps.quidditch_players_kmm_2024.datasource.QuidditchPlayersApiDataSource
 import com.cjmobileapps.quidditch_players_kmm_2024.util.coroutine.CoroutineDispatchers
 import com.cjmobileapps.quidditch_players_kmm_2024.util.onError
 import com.cjmobileapps.quidditch_players_kmm_2024.util.onSuccess
-//import com.cjmobileapps.quidditchplayersandroid.data.model.House
-//import com.cjmobileapps.quidditchplayersandroid.data.quidditchplayers.QuidditchPlayersUseCase
-//import com.cjmobileapps.quidditchplayersandroid.ui.NavItem
-//import com.cjmobileapps.quidditch_players_kmm_2024.util.coroutine.CoroutineDispatchers
-//import com.cjmobileapps.quidditchplayersandroid.util.onError
-//import com.cjmobileapps.quidditchplayersandroid.util.onSuccess
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 
 
-class HousesViewModelImpl
-    //@Inject
-    constructor(
-        private val quidditchPlayersApiDataSource: QuidditchPlayersApiDataSource,
+class HousesViewModelImpl(
         private val quidditchPlayersUseCase: QuidditchPlayersUseCase,
         coroutineDispatchers: CoroutineDispatchers,
     ) : ViewModel(), HousesViewModel {
