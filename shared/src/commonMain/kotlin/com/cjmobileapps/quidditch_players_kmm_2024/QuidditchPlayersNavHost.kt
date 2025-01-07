@@ -2,7 +2,6 @@ package com.cjmobileapps.quidditch_players_kmm_2024
 
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
-//import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NamedNavArgument
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
@@ -10,15 +9,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.cjmobileapps.quidditch_players_kmm_2024.ui.houses.HousesUi
-//import com.cjmobileapps.quidditchplayersandroid.ui.houses.HousesUi
 import com.cjmobileapps.quidditch_players_kmm_2024.ui.houses.viewmodel.HousesViewModel
 import com.cjmobileapps.quidditch_players_kmm_2024.ui.houses.viewmodel.HousesViewModelImpl
-//import com.cjmobileapps.quidditchplayersandroid.ui.playerdetail.PlayerDetailUi
-//import com.cjmobileapps.quidditchplayersandroid.ui.playerdetail.viewmodel.PlayerDetailViewModel
-//import com.cjmobileapps.quidditchplayersandroid.ui.playerdetail.viewmodel.PlayerDetailViewModelImpl
-//import com.cjmobileapps.quidditchplayersandroid.ui.playerslist.PlayersListUi
-//import com.cjmobileapps.quidditchplayersandroid.ui.playerslist.viewmodel.PlayersListViewModel
-//import com.cjmobileapps.quidditchplayersandroid.ui.playerslist.viewmodel.PlayersListViewModelImpl
 import kotlinx.coroutines.CoroutineScope
 import org.koin.compose.viewmodel.koinViewModel
 import org.koin.core.annotation.KoinExperimentalAPI
@@ -33,9 +25,6 @@ fun NavigationGraph(
     NavHost(navController = navController, startDestination = NavItem.Houses.navRoute) {
         composable(NavItem.Houses.navRoute) {
             val housesViewModel: HousesViewModel = koinViewModel<HousesViewModelImpl>()
-
-            //val housesViewModel: HousesViewModel = hiltViewModel<HousesViewModelImpl>()
-
 
             HousesUi(
                 navController = navController,

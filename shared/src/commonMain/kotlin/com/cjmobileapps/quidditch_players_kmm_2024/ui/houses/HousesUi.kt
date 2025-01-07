@@ -26,7 +26,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.cjmobileapps.quidditch_players_kmm_2024.data.model.House
-import com.cjmobileapps.quidditch_players_kmm_2024.theme.QuidditchPlayersKMM2024Theme
 import com.cjmobileapps.quidditch_players_kmm_2024.ui.houses.viewmodel.HousesViewModel
 import com.cjmobileapps.quidditch_players_kmm_2024.ui.util.QuidditchPlayersImage
 import com.cjmobileapps.quidditch_players_kmm_2024.ui.houses.viewmodel.HousesViewModelImpl
@@ -182,17 +181,6 @@ fun HouseCardUi(
     }
 }
 
-//@Preview(showBackground = true)
-@Composable
-fun HousesCardUiPreview() {
-    QuidditchPlayersKMM2024Theme {
-//        HouseCardUi(
-//            house = MockData.mockHouses.first(),
-//            onCardClick = { },
-//        )
-    }
-}
-
 @Composable
 fun HousesGridUi(
     houses: List<House>,
@@ -211,17 +199,5 @@ fun HousesGridUi(
                 onCardClick = onCardClick,
             )
         }
-    }
-}
-
-//@Preview(showBackground = true)
-@Composable
-fun HousesGridUiPreview() {
-    QuidditchPlayersKMM2024Theme {
-//        HousesGridUi(
-//            houses = MockData.mockHouses,
-//            onCardClick = { },
-//            modifier = Modifier,
-//        )
     }
 }

@@ -3,10 +3,6 @@ package com.cjmobileapps.quidditch_players_kmm_2024.data.model
 import io.ktor.http.HttpStatusCode
 import kotlinx.serialization.Serializable
 
-//import kotlinx.coroutines.Deferred
-//import retrofit2.Response
-//import java.net.HttpURLConnection
-
 @Serializable
 data class ResponseWrapper<T>(
     val data: T? = null,
@@ -19,10 +15,6 @@ data class Error(
     val isError: Boolean = false,
     val message: String? = null,
 )
-
-//data class DeferredResponseWrapper<T>(
-//    val deferredWrapper: Deferred<ResponseApiWrapper<T>>,
-//)
 
 data class ResponseWrappers<T1, T2>(
     val responseWrapper1: ResponseWrapper<T1>,
