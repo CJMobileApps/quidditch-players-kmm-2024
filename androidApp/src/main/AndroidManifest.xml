@@ -11,7 +11,7 @@
         android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.cjmobileapps.quidditch_players_kmm_2024.MainActivity"
+            android:name="com.cjmobileapps.quidditch_players_kmm_2024.QuidditchPlayersActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

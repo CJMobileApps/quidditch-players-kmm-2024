@@ -17,5 +17,5 @@ class QuidditchPlayersDaoImpl(quidditchPlayersDatabase: QuidditchPlayersDatabase
 
     override fun insertAllPlayers(players: List<PlayerEntity>) = quidditchPlayersDao.insertAllPlayers(players)
 
-    override fun deleteAllPlayers() = quidditchPlayersDao.deleteAllHouses()
+    override fun deleteAllPlayers() = quidditchPlayersDao.deleteAllPlayers()
 }
