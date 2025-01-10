@@ -10,6 +10,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
 import com.cjmobileapps.quidditch_players_kmm_2024.theme.QuidditchPlayersKMM2024Theme
+import com.cjmobileapps.quidditch_players_kmm_2024.ui.NavigationGraph
 import org.koin.compose.KoinContext
 
 @Composable

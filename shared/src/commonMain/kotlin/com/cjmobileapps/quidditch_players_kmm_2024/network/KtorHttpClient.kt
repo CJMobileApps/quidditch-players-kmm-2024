@@ -11,6 +11,7 @@ import io.ktor.serialization.kotlinx.json.json
 import co.touchlab.kermit.Logger.Companion as KermitLogger
 
 
+// todo fix this in module
 class KtorHttpClient {
     val httpClient: HttpClient = HttpClient {
         install(ContentNegotiation) {

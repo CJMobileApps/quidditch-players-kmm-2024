@@ -4,8 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 
-//TODO rename this from MainActivity
-class MainActivity : ComponentActivity() {
+class QuidditchPlayersActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -14,16 +13,3 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-
-//@Composable
-//fun GreetingView(text: String) {
-//    Text(text = text)
-//}
-//
-//@Preview
-//@Composable
-//fun DefaultPreview() {
-//    MyApplicationTheme {
-//        GreetingView("Hello, Android!")
-//    }
-//}
