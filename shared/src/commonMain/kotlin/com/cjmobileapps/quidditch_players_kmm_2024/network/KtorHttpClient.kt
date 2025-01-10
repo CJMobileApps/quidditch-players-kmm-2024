@@ -10,25 +10,21 @@ import io.ktor.client.plugins.logging.Logging
 import io.ktor.serialization.kotlinx.json.json
 import co.touchlab.kermit.Logger.Companion as KermitLogger
 
-
-// todo fix this in module
-class KtorHttpClient {
-    val httpClient: HttpClient = HttpClient {
-        install(ContentNegotiation) {
-            json()
-        }
-        defaultRequest {
-            host = "10.0.2.2:8080"
-        }
-        if (InitKoin.isDebugMode()) {
-            install(Logging) {
-                logger = object : Logger {
-                    override fun log(message: String) {
-                        KermitLogger.d { message }
-                    }
+val httpClient = HttpClient {
+    install(ContentNegotiation) {
+        json()
+    }
+    defaultRequest {
+        host = "10.0.2.2:8080"
+    }
+    if (InitKoin.isDebugMode()) {
+        install(Logging) {
+            logger = object : Logger {
+                override fun log(message: String) {
+                    KermitLogger.d { message }
                 }
-                level = LogLevel.ALL
             }
+            level = LogLevel.ALL
         }
     }
 }

@@ -6,10 +6,10 @@ import com.cjmobileapps.quidditch_players_kmm_2024.data.model.Position
 import com.cjmobileapps.quidditch_players_kmm_2024.data.model.ResponseWrapper
 import com.cjmobileapps.quidditch_players_kmm_2024.data.model.ResponseWrappers
 import com.cjmobileapps.quidditch_players_kmm_2024.data.model.Status
-import com.cjmobileapps.quidditch_players_kmm_2024.network.KtorHttpClient
 import com.cjmobileapps.quidditch_players_kmm_2024.util.withContextApiWrapper
 import com.cjmobileapps.quidditch_players_kmm_2024.util.coroutine.CoroutineDispatchers
 import com.cjmobileapps.quidditch_players_kmm_2024.util.withContextApiWrappers
+import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.get
 import io.ktor.client.request.parameter
@@ -19,7 +19,7 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
 
 class QuidditchPlayersApiDataSource(
-    private val ktorHttpClient: KtorHttpClient,
+    private val httpClient: HttpClient,
     private val coroutineDispatchers: CoroutineDispatchers,
 ) {
 
@@ -27,8 +27,7 @@ class QuidditchPlayersApiDataSource(
         return withContextApiWrapper(coroutineContext = coroutineDispatchers.io) {
             coroutineScope {
                 async {
-                    ktorHttpClient
-                        .httpClient
+                    httpClient
                         .get("api/v1/quidditchplayers/house")
                         .body<ResponseWrapper<List<House>>>()
                 }
@@ -45,8 +44,7 @@ class QuidditchPlayersApiDataSource(
     private suspend fun getPlayersByHouseDeferred(houseName: String): Deferred<ResponseWrapper<List<Player>>> {
         return coroutineScope {
             async {
-                ktorHttpClient
-                    .httpClient
+                httpClient
                     .get("api/v1/quidditchplayers/player") {
                         parameter("houseName", houseName)
                     }
@@ -66,8 +64,7 @@ class QuidditchPlayersApiDataSource(
     private suspend fun getPositionsDeferred(): Deferred<ResponseWrapper<Map<Int, Position>>> {
         return coroutineScope {
             async {
-                ktorHttpClient
-                    .httpClient
+                httpClient
                     .get("api/v1/quidditchplayers/position")
                     .body<ResponseWrapper<Map<Int, Position>>>()
             }
@@ -78,8 +75,7 @@ class QuidditchPlayersApiDataSource(
         return withContextApiWrapper(coroutineContext = coroutineDispatchers.io) {
             coroutineScope {
                 async {
-                    ktorHttpClient
-                        .httpClient
+                    httpClient
                         .get("api/v1/quidditchplayers/player/status") {
                             parameter("houseName", houseName)
                         }
@@ -93,8 +89,7 @@ class QuidditchPlayersApiDataSource(
         return withContextApiWrapper(coroutineContext = coroutineDispatchers.io) {
             coroutineScope {
                 async {
-                    ktorHttpClient
-                        .httpClient
+                    httpClient
                         .get {
                             url {
                                 path("api/v1/quidditchplayers/player/status", playerId)

@@ -86,7 +86,7 @@ class QuidditchPlayersUseCase(
                                 )
                                 ResponseWrapperUtil.createResponseWrapperSuccess(true)
                             } catch (e: Exception) {
-                                Logger.e(tag) { "quidditchPlayersRepository.createPlayersByHouseToDB() error occurred: $e \\n ${e.message}" }
+                                Logger.e(tag) { "quidditchPlayersRepository.createPlayersByHouseToDB() error occurred: $e \\n ${e.message} ${e.printStackTrace()}" }
                                 ResponseWrapperUtil.createResponseWrapperError(
                                     ErrorResponse(
                                         isError = true,
