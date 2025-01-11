@@ -14,6 +14,8 @@ lifecycleViewModel = "2.8.2"
 ksp = "2.1.0-1.0.29"
 room = "2.7.0-alpha12"
 uiTooling = "1.5.3"
+mokkery = "2.5.0"
+coroutines = "1.10.1"
 
 [libraries]
 androidx-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "uiTooling" }
@@ -44,6 +46,13 @@ navigation-compose = { module = "org.jetbrains.androidx.navigation:navigation-co
 room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
 room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
 
+# Test
+kotlin-test =  { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
+kotlin-coroutine-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
+
+#implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.0")  // or the latest version
+#mockk-common = { module = "io.mockk:mockk-common", version.ref = "mockk" }
+
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 androidLibrary = { id = "com.android.library", version.ref = "agp" }
@@ -58,5 +67,7 @@ kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", vers
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 ksp = { id ="com.google.devtools.ksp", version.ref = "ksp" }
 room = { id = "androidx.room", version.ref = "room" }
+mokkery = { id = "dev.mokkery", version.ref = "mokkery" }
+
 
 
