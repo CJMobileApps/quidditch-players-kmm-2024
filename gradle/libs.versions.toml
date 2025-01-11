@@ -15,6 +15,7 @@ ksp = "2.1.0-1.0.29"
 room = "2.7.0-alpha12"
 uiTooling = "1.5.3"
 mockk = "1.13.5"
+coroutines = "1.10.1"
 
 [libraries]
 androidx-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "uiTooling" }
@@ -47,6 +48,8 @@ room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
 
 # Test
 kotlin-test =  { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
+kotlin-coroutine-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
+#implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.0")  // or the latest version
 #mockk-common = { module = "io.mockk:mockk-common", version.ref = "mockk" }
 
 [plugins]
