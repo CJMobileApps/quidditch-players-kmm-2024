@@ -8,6 +8,7 @@ plugins {
     alias(libs.plugins.jetbrains.compose)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.ksp)
+    id("dev.mokkery") version "2.5.0"
     // https://issuetracker.google.com/issues/343408758#comment4
     // https://stackoverflow.com/questions/78627516/room-with-kmm-unresolved-reference-instantiateimpl
     // alias(libs.plugins.room)
@@ -41,6 +42,13 @@ kotlin {
     applyDefaultHierarchyTemplate()
 
     sourceSets {
+        commonTest.dependencies {
+            with(libs) {
+                // Testing
+                implementation(kotlin.test)
+                implementation("io.mockative:mockative:2.0.0")
+            }
+        }
         commonMain.dependencies {
             with(compose) {
                 implementation(ui)

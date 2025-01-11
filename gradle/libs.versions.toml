@@ -14,6 +14,7 @@ lifecycleViewModel = "2.8.2"
 ksp = "2.1.0-1.0.29"
 room = "2.7.0-alpha12"
 uiTooling = "1.5.3"
+mockk = "1.13.5"
 
 [libraries]
 androidx-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "uiTooling" }
@@ -43,6 +44,10 @@ koin-compose-viewmodel = { module = "io.insert-koin:koin-compose-viewmodel", ver
 navigation-compose = { module = "org.jetbrains.androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
 room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
 room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
+
+# Test
+kotlin-test =  { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
+#mockk-common = { module = "io.mockk:mockk-common", version.ref = "mockk" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
