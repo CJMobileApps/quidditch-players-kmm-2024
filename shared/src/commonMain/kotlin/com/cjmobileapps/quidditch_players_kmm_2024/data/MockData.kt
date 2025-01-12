@@ -11,6 +11,10 @@ import com.cjmobileapps.quidditch_players_kmm_2024.data.model.ResponseWrappers
 import com.cjmobileapps.quidditch_players_kmm_2024.data.model.Status
 import com.cjmobileapps.quidditch_players_kmm_2024.data.model.toPlayersEntities
 import io.ktor.http.HttpStatusCode
+import kotlinx.serialization.builtins.ListSerializer
+import kotlinx.serialization.builtins.MapSerializer
+import kotlinx.serialization.builtins.serializer
+import kotlinx.serialization.json.Json
 import com.cjmobileapps.quidditch_players_kmm_2024.data.model.Error as ErrorResponse
 
 object MockData {
@@ -50,6 +54,11 @@ object MockData {
             statusCode = HttpStatusCode.OK.value,
         )
 
+    val mockHousesResponseWrapperJson: String = Json.encodeToString(
+        ResponseWrapper.serializer(ListSerializer(House.serializer())),
+        mockHousesResponseWrapper
+    )
+
     val mockHousesGenericErrorResponseWrapper: ResponseWrapper<List<House>> =
         ResponseWrapperUtil.createResponseWrapperError(
             ErrorResponse(isError = true, message = "Some error"),
@@ -67,6 +76,11 @@ object MockData {
             data = ravenclawTeam(),
             statusCode = HttpStatusCode.OK.value,
         )
+
+    val mockRavenclawPlayersResponseWrapperJson: String = Json.encodeToString(
+        ResponseWrapper.serializer(ListSerializer(Player.serializer())),
+        mockRavenclawPlayersResponseWrapper
+    )
 
     private val mockRavenclawPGenericErrorResponseWrapper: ResponseWrapper<List<Player>> =
         ResponseWrapperUtil.createResponseWrapperError(
@@ -568,6 +582,11 @@ object MockData {
             statusCode = HttpStatusCode.OK.value,
         )
 
+    val mockPositionsResponseWrapperJson: String = Json.encodeToString(
+        ResponseWrapper.serializer(MapSerializer(Int.serializer(), Position.serializer())),
+        mockPositionsResponseWrapper
+    )
+
     private val mockPositionsGenericErrorResponseWrapper: ResponseWrapper<Map<Int, Position>> =
         ResponseWrapperUtil.createResponseWrapperError(
             ErrorResponse(isError = true, message = "Some error"),
@@ -633,6 +652,11 @@ object MockData {
             data = mockStatus(),
             statusCode = HttpStatusCode.OK.value,
         )
+
+    val mockStatusResponseWrapperJson: String = Json.encodeToString(
+        ResponseWrapper.serializer(Status.serializer()),
+        mockStatusResponseWrapper
+    )
 
     //private val mockStatusResponseSuccess = Response.success(mockStatusResponseWrapper)
 
