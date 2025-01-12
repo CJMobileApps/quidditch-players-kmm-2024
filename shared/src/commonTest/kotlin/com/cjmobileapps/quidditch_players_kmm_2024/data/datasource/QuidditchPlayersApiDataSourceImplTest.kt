@@ -1,6 +1,7 @@
 package com.cjmobileapps.quidditch_players_kmm_2024.data.datasource
 
 import com.cjmobileapps.quidditch_players_kmm_2024.data.MockData
+import com.cjmobileapps.quidditch_players_kmm_2024.data.model.HouseName
 import com.cjmobileapps.quidditch_players_kmm_2024.datasource.QuidditchPlayersApiDataSourceImpl
 import com.cjmobileapps.quidditch_players_kmm_2024.util.TestCoroutineDispatchers
 import io.ktor.client.HttpClient
@@ -67,85 +68,156 @@ class QuidditchPlayersApiDataSourceImplTest {
             )
         }
 
-//    @Test
-//    fun `get players by house success flow`() =
-//        runTest {
-//            // when
-//            Mockito.`when`(mockQuidditchPlayersApi.getPlayersByHouse(houseName = HouseName.RAVENCLAW.name))
-//                .thenReturn(
-//                    MockData.mockRavenclawPlayersDeferredResponseSuccess,
-//                )
-//
-//            // then
-//            setupQuidditchPlayersApiDataSource()
-//            val players = quidditchPlayersApiDataSource.getPlayersByHouse(HouseName.RAVENCLAW.name)
-//
-//            // verify
-//            Assertions.assertEquals(
-//                MockData.mockRavenclawPlayersResponseWrapper,
-//                players,
-//            )
-//        }
-//
-//    @Test
-//    fun`fetch players and positions success flow`() =
-//        runTest {
-//            // when
-//            Mockito.`when`(mockQuidditchPlayersApi.getPlayersByHouse(houseName = HouseName.RAVENCLAW.name))
-//                .thenReturn(
-//                    MockData.mockRavenclawPlayersDeferredResponseSuccess,
-//                )
-//            Mockito.`when`(mockQuidditchPlayersApi.getPositions()).thenReturn(MockData.mockPositionsDeferredResponseSuccess)
-//
-//            // then
-//            setupQuidditchPlayersApiDataSource()
-//            val playersAndPositions = quidditchPlayersApiDataSource.fetchPlayersAndPositions(HouseName.RAVENCLAW.name)
-//
-//            // verify
-//            Assertions.assertEquals(
-//                MockData.mockRavenclawPlayersAndPositionsResponseWrappers,
-//                playersAndPositions,
-//            )
-//        }
-//
-//    @Test
-//    fun `fetch status by house name success flow`() =
-//        runTest {
-//            // when
-//            Mockito.`when`(
-//                mockQuidditchPlayersApi.getStatusByHouseName(houseName = HouseName.RAVENCLAW.name),
-//            ).thenReturn(MockData.mockStatusDeferredResponseSuccess)
-//
-//            // then
-//            setupQuidditchPlayersApiDataSource()
-//            val status = quidditchPlayersApiDataSource.fetchStatusByHouseName(houseName = HouseName.RAVENCLAW.name)
-//
-//            // verify
-//            Assertions.assertEquals(
-//                MockData.mockStatusResponseWrapper,
-//                status,
-//            )
-//        }
-//
-//    @Test
-//    fun `fetch status by player id success flow`() =
-//        runTest {
-//            // given
-//            val playerId = MockData.ravenclawTeam().first().id.toString()
-//
-//            // when
-//            Mockito.`when`(
-//                mockQuidditchPlayersApi.fetchStatusByPlayerId(playerId = playerId),
-//            ).thenReturn(MockData.mockStatusDeferredResponseSuccess)
-//
-//            // then
-//            setupQuidditchPlayersApiDataSource()
-//            val status = quidditchPlayersApiDataSource.fetchStatusByPlayerId(playerId = playerId)
-//
-//            // verify
-//            Assertions.assertEquals(
-//                MockData.mockStatusResponseWrapper,
-//                status,
-//            )
-//        }
+    @Test
+    fun `get players by house success flow`() =
+        runTest {
+            // when
+            mockHttpClient = HttpClient(MockEngine) {
+                install(ContentNegotiation) {
+                    json(Json)  // Install ContentNegotiation with JSON support
+                }
+                engine {
+                    addHandler { request ->
+                        // Check that the request URL matches the expected URL
+                        if (request.url.toString() == "http://localhost/api/v1/quidditchplayers/player?houseName=RAVENCLAW") {
+                            return@addHandler respond(
+                                content = ByteReadChannel(MockData.mockRavenclawPlayersResponseWrapperJson),
+                                status = HttpStatusCode.OK,
+                                headers = headersOf("Content-Type", "application/json")
+                            )
+                        } else {
+                            // Handle other requests with a 404 or some other response
+                            return@addHandler respondError(HttpStatusCode.NotFound)
+                        }
+                    }
+                }
+            }
+
+            // then
+            setupQuidditchPlayersApiDataSource()
+            val players = quidditchPlayersApiDataSource.getPlayersByHouse(HouseName.RAVENCLAW.name)
+
+            // verify
+            assertEquals(
+                MockData.mockRavenclawPlayersResponseWrapper,
+                players,
+            )
+        }
+
+    @Test
+    fun`fetch players and positions success flow`() =
+        runTest {
+            // when
+            mockHttpClient = HttpClient(MockEngine) {
+                install(ContentNegotiation) {
+                    json(Json)  // Install ContentNegotiation with JSON support
+                }
+                engine {
+                    addHandler { request ->
+                        // Check that the request URL matches the expected URL
+                        if (request.url.toString() == "http://localhost/api/v1/quidditchplayers/player?houseName=RAVENCLAW") {
+                            return@addHandler respond(
+                                content = ByteReadChannel(MockData.mockRavenclawPlayersResponseWrapperJson),
+                                status = HttpStatusCode.OK,
+                                headers = headersOf("Content-Type", "application/json")
+                            )
+                        } else if (request.url.toString() == "http://localhost/api/v1/quidditchplayers/position") {
+                            return@addHandler respond(
+                                content = ByteReadChannel(MockData.mockPositionsResponseWrapperJson),
+                                status = HttpStatusCode.OK,
+                                headers = headersOf("Content-Type", "application/json")
+                            )
+                        } else {
+                            // Handle other requests with a 404 or some other response
+                            return@addHandler respondError(HttpStatusCode.NotFound)
+                        }
+                    }
+                }
+            }
+
+            // then
+            setupQuidditchPlayersApiDataSource()
+            val playersAndPositions = quidditchPlayersApiDataSource.fetchPlayersAndPositions(HouseName.RAVENCLAW.name)
+
+            // verify
+            assertEquals(
+                MockData.mockRavenclawPlayersAndPositionsResponseWrappers,
+                playersAndPositions,
+            )
+        }
+
+    @Test
+    fun `fetch status by house name success flow`() =
+        runTest {
+            // when
+            mockHttpClient = HttpClient(MockEngine) {
+                install(ContentNegotiation) {
+                    json(Json)  // Install ContentNegotiation with JSON support
+                }
+                engine {
+                    addHandler { request ->
+                        // Check that the request URL matches the expected URL
+                        if (request.url.toString() == "http://localhost/api/v1/quidditchplayers/player/status?houseName=RAVENCLAW") {
+                            return@addHandler respond(
+                                content = ByteReadChannel(MockData.mockStatusResponseWrapperJson),
+                                status = HttpStatusCode.OK,
+                                headers = headersOf("Content-Type", "application/json")
+                            )
+                        } else {
+                            // Handle other requests with a 404 or some other response
+                            return@addHandler respondError(HttpStatusCode.NotFound)
+                        }
+                    }
+                }
+            }
+
+            // then
+            setupQuidditchPlayersApiDataSource()
+            val status = quidditchPlayersApiDataSource.getStatusByHouseName(houseName = HouseName.RAVENCLAW.name)
+
+            // verify
+            assertEquals(
+                MockData.mockStatusResponseWrapper,
+                status,
+            )
+        }
+
+    @Test
+    fun `fetch status by player id success flow`() =
+        runTest {
+            // given
+            val playerId = MockData.ravenclawTeam().first().id
+
+            // when
+            mockHttpClient = HttpClient(MockEngine) {
+                install(ContentNegotiation) {
+                    json(Json)  // Install ContentNegotiation with JSON support
+                }
+                engine {
+                    addHandler { request ->
+                        // Check that the request URL matches the expected URL
+                        if (request.url.toString() == "http://localhost/api/v1/quidditchplayers/player/status/${playerId}") {
+                            return@addHandler respond(
+                                content = ByteReadChannel(MockData.mockStatusResponseWrapperJson),
+                                status = HttpStatusCode.OK,
+                                headers = headersOf("Content-Type", "application/json")
+                            )
+                        } else {
+                            // Handle other requests with a 404 or some other response
+                            return@addHandler respondError(HttpStatusCode.NotFound)
+                        }
+                    }
+                }
+            }
+
+            // then
+            setupQuidditchPlayersApiDataSource()
+            val status = quidditchPlayersApiDataSource.fetchStatusByPlayerId(playerId = playerId)
+
+            // verify
+            assertEquals(
+                MockData.mockStatusResponseWrapper,
+                status,
+            )
+        }
 }
