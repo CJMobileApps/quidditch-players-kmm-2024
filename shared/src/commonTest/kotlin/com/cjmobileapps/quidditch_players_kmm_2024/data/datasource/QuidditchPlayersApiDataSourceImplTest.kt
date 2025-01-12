@@ -20,26 +20,7 @@ import kotlin.test.assertEquals
 class QuidditchPlayersApiDataSourceImplTest {
     private lateinit var quidditchPlayersApiDataSource: QuidditchPlayersApiDataSourceImpl
 
-    val mockHttpClient = HttpClient(MockEngine) {
-        install(ContentNegotiation) {
-            json(Json)  // Install ContentNegotiation with JSON support
-        }
-        engine {
-            addHandler { request ->
-                // Check that the request URL matches the expected URL
-                if (request.url.toString() == "http://localhost/api/v1/quidditchplayers/house") {
-                    return@addHandler respond(
-                        content = ByteReadChannel(MockData.mockHousesResponseWrapperJson),
-                        status = HttpStatusCode.OK,
-                        headers = headersOf("Content-Type", "application/json")
-                    )
-                } else {
-                    // Handle other requests with a 404 or some other response
-                    return@addHandler respondError(HttpStatusCode.NotFound)
-                }
-            }
-        }
-    }
+    lateinit var mockHttpClient: HttpClient
 
 
     private fun setupQuidditchPlayersApiDataSource() {
@@ -53,6 +34,29 @@ class QuidditchPlayersApiDataSourceImplTest {
     @Test
     fun `houses happy success flow`() =
         runTest {
+            // when
+            mockHttpClient = HttpClient(MockEngine) {
+                install(ContentNegotiation) {
+                    json(Json)  // Install ContentNegotiation with JSON support
+                }
+                engine {
+                    addHandler { request ->
+                        // Check that the request URL matches the expected URL
+                        if (request.url.toString() == "http://localhost/api/v1/quidditchplayers/house") {
+                            return@addHandler respond(
+                                content = ByteReadChannel(MockData.mockHousesResponseWrapperJson),
+                                status = HttpStatusCode.OK,
+                                headers = headersOf("Content-Type", "application/json")
+                            )
+                        } else {
+                            // Handle other requests with a 404 or some other response
+                            return@addHandler respondError(HttpStatusCode.NotFound)
+                        }
+                    }
+                }
+            }
+
+            // then
             setupQuidditchPlayersApiDataSource()
             val houses = quidditchPlayersApiDataSource.getAllHouses()
 
