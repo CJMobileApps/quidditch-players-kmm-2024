@@ -48,6 +48,7 @@ kotlin {
                 // Testing
                 implementation(kotlin.test)
                 implementation(kotlin.coroutine.test)
+                implementation(ktor.client.mock)
             }
         }
         commonMain.dependencies {
@@ -91,7 +92,6 @@ kotlin {
                 implementation(room.runtime)
             }
         }
-
         androidMain.dependencies {
             // Compose
             api(libs.androidx.activity.compose)
@@ -106,6 +106,9 @@ kotlin {
             // Compose preview only works on Android
             implementation(libs.androidx.ui.tooling)
             implementation(libs.androidx.ui.tooling.preview)
+
+            // Testing
+            implementation("org.mockito.kotlin:mockito-kotlin:5.0.0")
         }
 
         iosMain.dependencies {
