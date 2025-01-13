@@ -127,9 +127,9 @@ class PlayersListViewModelImpl(
     override fun goToPlayerDetailUi(player: PlayerState) {
         val state = getState()
         if (state !is PlayersListState.PlayerListLoadedState) return
-        quidditchPlayersUseCase.currentPlayer = player
+        quidditchPlayersUseCase.setCurrentPlayer(player)
         state.playersNavRouteUi.value =
-            PlayersListNavRouteUi.GoToPlayerDetailUi(player.id.toString())
+            PlayersListNavRouteUi.GoToPlayerDetailUi(player.id)
     }
 
     override fun getPlayersListNavRouteUiState(): PlayersListNavRouteUi {
