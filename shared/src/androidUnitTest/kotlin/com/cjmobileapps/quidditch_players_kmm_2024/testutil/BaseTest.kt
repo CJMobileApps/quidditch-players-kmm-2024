@@ -1,4 +1,4 @@
-package testutil
+package com.cjmobileapps.quidditch_players_kmm_2024.testutil
 
 import org.mockito.Mockito
 import org.mockito.MockitoAnnotations
@@ -9,7 +9,6 @@ abstract class BaseTest {
 
     @BeforeTest
     open fun setup() {
-        println("HERE This called")
         MockitoAnnotations.openMocks(this)
     }
 
