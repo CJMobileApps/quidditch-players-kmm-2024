@@ -57,7 +57,7 @@ class PlayerDetailViewModelImpl(
     }
 
     init {
-        val player = quidditchPlayersUseCase.currentPlayer.takeIf { it?.id.toString() == playerId }
+        val player = quidditchPlayersUseCase.getCurrentPlayer().takeIf { it?.id.toString() == playerId }
         if (player != null) {
             playerDetailState.value = PlayerDetailState.PlayerDetailLoadedState(player = player)
             val state = getState() as PlayerDetailState.PlayerDetailLoadedState
