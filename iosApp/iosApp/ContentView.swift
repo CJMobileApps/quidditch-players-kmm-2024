@@ -17,7 +17,7 @@ import UIKit
 // }
 struct ComposeView: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> UIViewController {
-        Main_iosKt.MainViewController()
+        QuidditchPlayersUi_iosKt.MainViewController()
         //Platform_iosKt.MainViewController()
 //        Main_iosKt.MainViewController()
     }

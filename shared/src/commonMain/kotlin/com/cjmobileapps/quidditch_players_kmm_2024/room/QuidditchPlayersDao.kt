@@ -5,25 +5,29 @@ import androidx.room.Insert
 import androidx.room.Query
 import com.cjmobileapps.quidditch_players_kmm_2024.data.model.House
 import com.cjmobileapps.quidditch_players_kmm_2024.data.model.PlayerEntity
-import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface QuidditchPlayersDao {
+//    @Query("SELECT * FROM house")
+//    fun getAllHouses(): Flow<List<House>>
+
     @Query("SELECT * FROM house")
-    fun getAllHouses(): Flow<List<House>>
+    suspend fun getAllHouses(): List<House>
 
     @Insert
-    fun insertAllHouses(houses: List<House>)
+    suspend fun insertAllHouses(houses: List<House>)
 
     @Query("DELETE FROM house")
-    fun deleteAllHouses()
+    suspend fun deleteAllHouses()
 
+    //    @Query("SELECT * FROM playerEntity")
+//    fun getAllPlayers(): Flow<List<PlayerEntity>>
     @Query("SELECT * FROM playerEntity")
-    fun getAllPlayers(): Flow<List<PlayerEntity>>
+    suspend fun getAllPlayers(): List<PlayerEntity>
 
     @Insert
-    fun insertAllPlayers(players: List<PlayerEntity>)
+    suspend fun insertAllPlayers(players: List<PlayerEntity>)
 
     @Query("DELETE FROM PlayerEntity")
-    fun deleteAllPlayers()
+    suspend fun deleteAllPlayers()
 }
