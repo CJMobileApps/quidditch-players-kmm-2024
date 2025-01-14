@@ -65,7 +65,6 @@ kotlin {
                 api(koin.core)
                 implementation(koin.compose)
                 implementation(koin.compose.viewmodel)
-                implementation(lifecycle.viewmodel)
 
                 // ViewModel
                 implementation(lifecycle.viewmodel)
