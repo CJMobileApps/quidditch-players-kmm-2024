@@ -1,4 +1,4 @@
-# Quidditch Players Android 2023 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/CJMobileApps/quidditch-players-android-2023/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/CJMobileApps/quidditch-players-android-2023/tree/main) [![codecov](https://codecov.io/gh/CJMobileApps/quidditch-players-android-2023/graph/badge.svg?token=nruZM3ZAGj)](https://codecov.io/gh/CJMobileApps/quidditch-players-android-2023)
+# Quidditch Players Kotlin Multiplatform 2024
 
 Quidditch Players for Hogwarts Houses Android and iOS using Kotlin Multiplatform 2024
 
@@ -15,16 +15,14 @@ Dependencies
 - [Jetpack Compose](https://developer.android.com/jetpack/compose) - Jetpack Compose is Android’s recommended modern toolkit for building native UI. It simplifies and accelerates UI development on Android. Quickly bring your app to life with less code, powerful tools, and intuitive Kotlin APIs.
 - [Jetpack Navigation](https://developer.android.com/guide/navigation) - Android Jetpack's Navigation component helps you implement navigation, from simple button clicks to more complex patterns, such as app bars and the navigation drawer.
 - [Coroutines](https://kotlinlang.org/docs/coroutines-overview.html) - Asynchronous or non-blocking programming is an important part of the development landscape. When creating server-side, desktop, or mobile applications, it's important to provide an experience that is not only fluid from the user's perspective, but also scalable when needed.
-- 
-- 
-- [Retrofit](http://square.github.io/retrofit/) - A type-safe HTTP client for Android and Java.
-- [Dagger Hilt](https://dagger.dev/hilt/) - Hilt provides a standard way to incorporate Dagger dependency injection into an Android application.
-- [OkHttp](http://square.github.io/okhttp/) - An HTTP & HTTP/2 client for Android and Java applications.
-- [Mockito-Kotlin](https://github.com/mockito/mockito-kotlin) - A small library that provides helper functions to work with Mockito in Kotlin.
-- [JUnit 4 Vintage Engine](https://mvnrepository.com/artifact/org.junit.vintage/junit-vintage-engine) - A thin layer on top of JUnit 4 to allow running vintage tests (based on JUnit 3.8 and JUnit 4) with the JUnit Platform launcher infrastructure.
-- [JUnit 5](https://junit.org/junit5/) - JUnit 5 is the next generation of JUnit. The goal is to create an up-to-date foundation for developer-side testing on the JVM. This includes focusing on Java 8 and above, as well as enabling many different styles of testing.
-- [Timber](https://github.com/JakeWharton/timber) - A logger with a small, extensible API which provides utility on top of Android's normal Log class.
+- [Ktor](https://ktor.io/) - Framework for quickly creating connected applications in Kotlin with minimal effort.
 - [Room](https://developer.android.com/training/data-storage/room) - The Room persistence library provides an abstraction layer over SQLite to allow for more robust database access while harnessing the full power of SQLite.
+- [Koin](https://insert-koin.io/) - A framework to help you build any kind of Kotlin & Kotlin Multiplatform application, from Android mobile, Multiplatform apps to backend Ktor server applications Koin is developed by Kotzilla and open-source contributors.
+- [Kotlinx Serialization](https://github.com/Kotlin/kotlinx.serialization/) - Kotlin multiplatform / multi-format serialization.
+- [Kamel](https://github.com/Kamel-Media/Kamel) - Kotlin asynchronous media loading and caching library for Compose.
+- [Kermit](https://github.com/touchlab/Kermit) - Kermit by Touchlab is a Kotlin Multiplatform centralized logging utility.
+- [Mokkery](https://github.com/lupuuss/Mokkery) - About The mocking library for Kotlin Multiplatform, easy to use, boilerplate-free and compiler plugin driven.
+- [Mockito-Kotlin](https://github.com/mockito/mockito-kotlin) - A small library that provides helper functions to work with Mockito in Kotlin.
 
 Screen shots and Video Walkthrough
 ----
