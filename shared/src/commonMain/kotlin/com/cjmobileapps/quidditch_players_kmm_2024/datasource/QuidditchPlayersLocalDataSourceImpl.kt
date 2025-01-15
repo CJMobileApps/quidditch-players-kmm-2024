@@ -18,8 +18,8 @@ class QuidditchPlayersLocalDataSourceImpl(
         return withContext(coroutineDispatchers.io) {
             flow {
                 while (true) {
-                    emit(quidditchPlayersDao.getAllHouses()) // Call the suspend function
-                    delay(500) // Poll every 1 second
+                    emit(quidditchPlayersDao.getAllHouses())
+                    delay(500)
                 }
             }
         }
@@ -36,8 +36,8 @@ class QuidditchPlayersLocalDataSourceImpl(
         return withContext(coroutineDispatchers.io) {
             flow {
                 while (true) {
-                    emit(quidditchPlayersDao.getAllPlayers()) // Call the suspend function
-                    delay(500) // Poll every 1 second
+                    emit(quidditchPlayersDao.getAllPlayers())
+                    delay(500)
                 }
             }
         }
