@@ -17,7 +17,7 @@ object InitKoin {
 
         startKoin {
             config?.invoke(this)
-            modules(networkModule, dataModule, uiModule, coroutinesModule, databaseModule)
+            modules(networkModule, coroutinesModule, databaseModule, dataModule, uiModule)
         }
     }
 
