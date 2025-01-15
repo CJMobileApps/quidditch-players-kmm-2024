@@ -107,7 +107,7 @@ kotlin {
             implementation(libs.androidx.ui.tooling.preview)
 
             // Testing
-            implementation("org.mockito.kotlin:mockito-kotlin:5.0.0")
+            implementation(libs.mockito.kotlin)
         }
 
         iosMain.dependencies {

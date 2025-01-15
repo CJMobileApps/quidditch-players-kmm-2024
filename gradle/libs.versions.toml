@@ -9,6 +9,7 @@ kotlinx-serialization ="1.7.3"
 kamelImageDefault = "1.0.0"
 koin = "4.0.0"
 koinComposeMultiplatform = "1.2.0-Beta4"
+mockitoKotlin = "5.0.0"
 navigationCompose = "2.8.0-alpha02"
 lifecycleViewModel = "2.8.7"
 ksp = "2.1.0-1.0.29"
@@ -50,7 +51,7 @@ room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
 # Test
 kotlin-test =  { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 kotlin-coroutine-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
-
+mockito-kotlin = { module = "org.mockito.kotlin:mockito-kotlin", version.ref = "mockitoKotlin" }
 #implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.0")  // or the latest version
 #mockk-common = { module = "io.mockk:mockk-common", version.ref = "mockk" }
 
