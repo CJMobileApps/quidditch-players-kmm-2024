@@ -1,8 +1,6 @@
 package com.cjmobileapps.quidditch_players_kmm_2024.data.datasource
 
 import com.cjmobileapps.quidditch_players_kmm_2024.data.MockData
-import com.cjmobileapps.quidditch_players_kmm_2024.data.model.House
-import com.cjmobileapps.quidditch_players_kmm_2024.data.model.PlayerEntity
 import com.cjmobileapps.quidditch_players_kmm_2024.datasource.QuidditchPlayersLocalDataSource
 import com.cjmobileapps.quidditch_players_kmm_2024.datasource.QuidditchPlayersLocalDataSourceImpl
 import com.cjmobileapps.quidditch_players_kmm_2024.room.QuidditchPlayersDao
@@ -11,9 +9,7 @@ import dev.mokkery.answering.returns
 import dev.mokkery.everySuspend
 import dev.mokkery.mock
 import dev.mokkery.verifySuspend
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.test.runTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -35,12 +31,7 @@ class QuidditchPlayersLocalDataSourceImplTest {
     fun `getAllHousesFlow happy success flow`() =
         runTest {
             // given
-            val mockGetAllHousesFlow: Flow<List<House>> =
-                flow {
-                    emit(MockData.mockHouses)
-                }
-            everySuspend { mockQuidditchPlayersDao.getAllHouses() } returns mockGetAllHousesFlow
-
+            everySuspend { mockQuidditchPlayersDao.getAllHouses() } returns MockData.mockHouses
 
             // then
             setupQuidditchPlayersLocalDataSource()
@@ -72,12 +63,7 @@ class QuidditchPlayersLocalDataSourceImplTest {
     fun `getAllPlayersFlow happy success flow`() =
         runTest {
             // given
-            val mockGetAllPlayersEntitiesFlow: Flow<List<PlayerEntity>> =
-                flow {
-                    emit(MockData.mockPlayersEntities)
-                }
-
-            everySuspend { mockQuidditchPlayersDao.getAllPlayers() } returns mockGetAllPlayersEntitiesFlow
+            everySuspend { mockQuidditchPlayersDao.getAllPlayers() } returns MockData.mockPlayersEntities
 
             // then
             setupQuidditchPlayersLocalDataSource()

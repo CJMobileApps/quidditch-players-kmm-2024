@@ -7,15 +7,15 @@ class QuidditchPlayersDaoImpl(quidditchPlayersDatabase: QuidditchPlayersDatabase
 
     private var quidditchPlayersDao : QuidditchPlayersDao = quidditchPlayersDatabase.quidditchPlayersDao()
 
-    override fun getAllHouses() = quidditchPlayersDao.getAllHouses()
+    override suspend fun getAllHouses() = quidditchPlayersDao.getAllHouses()
 
-    override fun insertAllHouses(houses: List<House>) = quidditchPlayersDao.insertAllHouses(houses)
+    override suspend fun insertAllHouses(houses: List<House>) = quidditchPlayersDao.insertAllHouses(houses)
 
-    override fun deleteAllHouses() = quidditchPlayersDao.deleteAllHouses()
+    override suspend fun deleteAllHouses() = quidditchPlayersDao.deleteAllHouses()
 
-    override fun getAllPlayers() = quidditchPlayersDao.getAllPlayers()
+    override suspend fun getAllPlayers() = quidditchPlayersDao.getAllPlayers()
 
-    override fun insertAllPlayers(players: List<PlayerEntity>) = quidditchPlayersDao.insertAllPlayers(players)
+    override suspend fun insertAllPlayers(players: List<PlayerEntity>) = quidditchPlayersDao.insertAllPlayers(players)
 
-    override fun deleteAllPlayers() = quidditchPlayersDao.deleteAllPlayers()
+    override suspend fun deleteAllPlayers() = quidditchPlayersDao.deleteAllPlayers()
 }

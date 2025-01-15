@@ -2,24 +2,9 @@ import SwiftUI
 import shared
 import UIKit
 
-// struct ContentView: View {
-// 	let greet = Greeting().greet()
-//
-// 	var body: some View {
-// 		Text(greet)
-// 	}
-// }
-//
-// struct ContentView_Previews: PreviewProvider {
-// 	static var previews: some View {
-// 		ContentView()
-// 	}
-// }
 struct ComposeView: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> UIViewController {
-        Main_iosKt.MainViewController()
-        //Platform_iosKt.MainViewController()
-//        Main_iosKt.MainViewController()
+        QuidditchPlayersUi_iosKt.MainViewController()
     }
 
     func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}

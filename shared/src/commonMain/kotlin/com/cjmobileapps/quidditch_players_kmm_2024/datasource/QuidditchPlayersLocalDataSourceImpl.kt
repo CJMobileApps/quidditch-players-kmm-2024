@@ -4,8 +4,10 @@ import com.cjmobileapps.quidditch_players_kmm_2024.data.model.House
 import com.cjmobileapps.quidditch_players_kmm_2024.data.model.PlayerEntity
 import com.cjmobileapps.quidditch_players_kmm_2024.room.QuidditchPlayersDao
 import com.cjmobileapps.quidditch_players_kmm_2024.util.coroutine.CoroutineDispatchers
+import kotlinx.coroutines.delay
 
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.withContext
 
 class QuidditchPlayersLocalDataSourceImpl(
@@ -14,7 +16,12 @@ class QuidditchPlayersLocalDataSourceImpl(
 ) : QuidditchPlayersLocalDataSource {
     override suspend fun getAllHousesFlow(): Flow<List<House>> {
         return withContext(coroutineDispatchers.io) {
-            quidditchPlayersDao.getAllHouses()
+            flow {
+                while (true) {
+                    emit(quidditchPlayersDao.getAllHouses())
+                    delay(500)
+                }
+            }
         }
     }
 
@@ -27,7 +34,12 @@ class QuidditchPlayersLocalDataSourceImpl(
 
     override suspend fun getAllPlayersFlow(): Flow<List<PlayerEntity>> {
         return withContext(coroutineDispatchers.io) {
-            quidditchPlayersDao.getAllPlayers()
+            flow {
+                while (true) {
+                    emit(quidditchPlayersDao.getAllPlayers())
+                    delay(500)
+                }
+            }
         }
     }
 

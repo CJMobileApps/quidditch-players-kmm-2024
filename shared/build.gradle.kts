@@ -65,7 +65,6 @@ kotlin {
                 api(koin.core)
                 implementation(koin.compose)
                 implementation(koin.compose.viewmodel)
-                implementation(lifecycle.viewmodel)
 
                 // ViewModel
                 implementation(lifecycle.viewmodel)
@@ -108,7 +107,7 @@ kotlin {
             implementation(libs.androidx.ui.tooling.preview)
 
             // Testing
-            implementation("org.mockito.kotlin:mockito-kotlin:5.0.0")
+            implementation(libs.mockito.kotlin)
         }
 
         iosMain.dependencies {
@@ -137,6 +136,7 @@ dependencies {
     ksp(libs.room.compiler)
 
     // room
+    add("kspCommonMainMetadata", libs.room.compiler)
     add("kspAndroid", libs.room.compiler)
     add("kspIosSimulatorArm64", libs.room.compiler)
     add("kspIosX64", libs.room.compiler)
