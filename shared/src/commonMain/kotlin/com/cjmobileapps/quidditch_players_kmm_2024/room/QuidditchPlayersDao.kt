@@ -8,9 +8,6 @@ import com.cjmobileapps.quidditch_players_kmm_2024.data.model.PlayerEntity
 
 @Dao
 interface QuidditchPlayersDao {
-//    @Query("SELECT * FROM house")
-//    fun getAllHouses(): Flow<List<House>>
-
     @Query("SELECT * FROM house")
     suspend fun getAllHouses(): List<House>
 
@@ -20,8 +17,6 @@ interface QuidditchPlayersDao {
     @Query("DELETE FROM house")
     suspend fun deleteAllHouses()
 
-    //    @Query("SELECT * FROM playerEntity")
-//    fun getAllPlayers(): Flow<List<PlayerEntity>>
     @Query("SELECT * FROM playerEntity")
     suspend fun getAllPlayers(): List<PlayerEntity>
 
