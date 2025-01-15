@@ -15,7 +15,7 @@ lifecycleViewModel = "2.8.7"
 ksp = "2.1.0-1.0.29"
 room = "2.7.0-alpha12"
 uiTooling = "1.5.3"
-mokkery = "2.5.0"
+mokkery = "2.6.1"
 coroutines = "1.10.1"
 
 [libraries]
