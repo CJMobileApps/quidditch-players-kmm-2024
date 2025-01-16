@@ -15,7 +15,7 @@ val httpClient = HttpClient {
         json()
     }
     defaultRequest {
-        host = "10.0.2.2:8080"
+        host = if (InitKoin.isAndroidDevice()) "10.0.2.2:8080" else "localhost:8080"
     }
     if (InitKoin.isDebugMode()) {
         install(Logging) {

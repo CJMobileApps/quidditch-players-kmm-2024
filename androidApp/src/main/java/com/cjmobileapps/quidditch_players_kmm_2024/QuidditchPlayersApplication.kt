@@ -15,7 +15,7 @@ class QuidditchPlayersApplication : Application() {
             Logger.d { "${getPlatformName()} logging setup complete" }
         }
 
-        InitKoin.intKoin(isDebugMode = BuildConfig.DEBUG) {
+        InitKoin.intKoin(isDebugMode = BuildConfig.DEBUG, isAndroidDevice = true) {
             androidContext(this@QuidditchPlayersApplication)
         }
     }

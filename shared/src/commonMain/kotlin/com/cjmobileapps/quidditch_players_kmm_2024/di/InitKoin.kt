@@ -12,8 +12,15 @@ object InitKoin {
 
     private var isDebugMode = false
 
-    fun intKoin(isDebugMode: Boolean, config: KoinAppDeclaration? = null) {
+    private var isAndroidDevice = true
+
+    fun intKoin(
+        isDebugMode: Boolean,
+        isAndroidDevice: Boolean,
+        config: KoinAppDeclaration? = null
+    ) {
         this.isDebugMode = isDebugMode
+        this.isAndroidDevice = isAndroidDevice
 
         startKoin {
             config?.invoke(this)
@@ -22,4 +29,6 @@ object InitKoin {
     }
 
     fun isDebugMode() = isDebugMode
+
+    fun isAndroidDevice() = isAndroidDevice
 }

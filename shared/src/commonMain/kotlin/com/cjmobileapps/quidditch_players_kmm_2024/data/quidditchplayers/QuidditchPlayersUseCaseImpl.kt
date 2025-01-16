@@ -55,7 +55,7 @@ class QuidditchPlayersUseCaseImpl(
                         quidditchPlayersRepository.createAllHousesToDB(houses)
                         ResponseWrapperUtil.createResponseWrapperSuccess(true)
                     } catch (e: Exception) {
-                        Logger.e(tag) { "quidditchPlayersRepository.getAllHouses() error occurred: $e \\n ${e.message}" }
+                        Logger.e(tag) { "quidditchPlayersRepository.getAllHouses() error occurred: $e \\n ${e.message} ${e.printStackTrace()}" }
                         ResponseWrapperUtil.createResponseWrapperError(
                             ErrorResponse(
                                 isError = true,

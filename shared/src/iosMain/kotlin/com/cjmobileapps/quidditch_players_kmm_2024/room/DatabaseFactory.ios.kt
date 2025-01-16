@@ -1,6 +1,7 @@
 package com.cjmobileapps.quidditch_players_kmm_2024.room
 
 import androidx.room.Room
+import androidx.sqlite.driver.bundled.BundledSQLiteDriver
 import kotlinx.cinterop.ExperimentalForeignApi
 import platform.Foundation.NSDocumentDirectory
 import platform.Foundation.NSFileManager
@@ -12,7 +13,8 @@ actual class DatabaseFactory {
             val dbFilePath = documentDirectory() + "/quidditch-players-database.db"
             return Room.databaseBuilder<QuidditchPlayersDatabase>(
                 name = dbFilePath
-            ).build()
+            ).setDriver(BundledSQLiteDriver())
+                .build()
 
         }
     }

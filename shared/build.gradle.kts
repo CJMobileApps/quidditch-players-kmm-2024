@@ -89,6 +89,9 @@ kotlin {
 
                 // Room
                 implementation(room.runtime)
+
+                // Sqlite Bundled
+                implementation(libs.sqlite.bundled)
             }
         }
         androidMain.dependencies {

@@ -10,7 +10,7 @@ import platform.UIKit.UIDevice
 fun MainViewController() = ComposeUIViewController(
     configure = {
         setupLogging()
-        InitKoin.intKoin(isDebugMode = true)
+        InitKoin.intKoin(isDebugMode = true, isAndroidDevice = false)
     }
 ) {
     QuidditchPlayersUi()
@@ -22,4 +22,5 @@ fun setupLogging() {
     Logger.d { "${getPlatformName()} logging setup complete" }
 }
 
-actual fun getPlatformName(): String = UIDevice.currentDevice.systemName() + " " + UIDevice.currentDevice.systemVersion
+actual fun getPlatformName(): String =
+    UIDevice.currentDevice.systemName() + " " + UIDevice.currentDevice.systemVersion
