@@ -26,7 +26,15 @@ Dependencies
 
 Screen shots and Video Walkthrough
 ----
-**Android**
+## Android
 ![Android houses](https://github.com/user-attachments/assets/e9bd94b8-ecd0-4b5f-b2df-ff4739df18cb)
 ![Android Gryffindor list](https://github.com/user-attachments/assets/b4f25354-387b-4861-a644-ea9b12f73c42)
 ![Android Harry Potter Detail](https://github.com/user-attachments/assets/bf73ca65-0815-4991-b801-a8b0c9564b7e)
+
+## iOS
+![Simulator Screenshot - iPhone 15 - 2025-01-16 at 13 53 21](https://github.com/user-attachments/assets/3bf4bcbc-5091-4f34-83b5-0f718a2cca36)
+![Simulator Screenshot - iPhone 15 - 2025-01-16 at 13 53 45](https://github.com/user-attachments/assets/6882f0a7-6f82-4f21-aaf1-8ce2cbc299d7)
+![Simulator Screenshot - iPhone 15 - 2025-01-16 at 13 55 27](https://github.com/user-attachments/assets/3553c92a-b953-45fa-9c0d-be085c9eaea9)
+
+
+
